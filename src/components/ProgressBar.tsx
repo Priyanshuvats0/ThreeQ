@@ -5,7 +5,7 @@ import {
 import 'react-circular-progressbar/dist/styles.css';
 
 const ProgressBar = () => {
-        const percentage=50
+        const percentage=33
   return (
      <div className="left w-[20%] pr-8 flex justify-center  items-center ">
              <CircularProgressbar

@@ -6,7 +6,11 @@ import { GoGoal } from "react-icons/go";
 import { FaTrophy } from "react-icons/fa";
 
 
+
 export const Dashboard = () => {
+  
+
+
   const cardTail:any="text-5xl text-[#3A80F2] bg-[#1F355B] rounded-md p-2"
   return (
 <div className=' pt-12'>
