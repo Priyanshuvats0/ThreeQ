@@ -1,11 +1,17 @@
+import { useEffect, useState } from 'react';
 import {
   CircularProgressbar,
   buildStyles,
 } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const ProgressBar = () => {
-        const percentage=33
+const ProgressBar = ({done}:{done:number}) => {
+  const [percent,setPercent]=useState<number>(0);
+  useEffect(()=>{
+     setPercent(done);
+   
+  },[done]);
+        const percentage=Math.round(percent*33.3)
   return (
      <div className="left w-[20%] pr-8 flex justify-center  items-center ">
              <CircularProgressbar

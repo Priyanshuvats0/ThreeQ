@@ -4,6 +4,8 @@ interface CorouselProps{
     title:String,
     diff:"Easy"|"Medium"|"Hard",
     url:any,
+   progressUpdate:()=>{},
+   num:number
 }
 
 const diffcss={
@@ -12,8 +14,8 @@ const diffcss={
    "Medium":"text-yellow-400"
 }
 
-const Corousel = ({title,diff,url}:CorouselProps) => {
-      {console.log(url)}
+const Corousel = ({title,diff,url,progressUpdate,num}:CorouselProps) => {
+      // {console.log(num)}
 
       function go(){
         window.open(url,"_blank");
@@ -25,7 +27,9 @@ const Corousel = ({title,diff,url}:CorouselProps) => {
     
                     <div className="w-[70%] text-xl font-semibold pl-4 " onClick={go}>  {title}</div>
                     <div className={`${diffcss[diff]}  w-[20%] text-xl ` } onClick={go}>{diff}</div>
-                    <input type="checkbox" className="scale-150"/>
+                    <input type="checkbox" className="scale-150" onClick={()=>{progressUpdate(num)
+                      console.log(num)
+                    }}/>
                 </div>
   )
 }
