@@ -8,10 +8,11 @@ function App() {
  
   return (
     <>
-     <div className='bg-gradient-to-br from-black to-[#0d1b3d] min-h-screen'>
+     <div className='min-h-screen bg-gradient-to-br from-[#020204] to-[#1e1e1e]'>
       <Dashboard/>
       <Questions/>
       <Footer/>
+
      </div>
     </>
   )

@@ -11,7 +11,7 @@ export const Dashboard = () => {
   
 
 
-  const cardTail:any="text-5xl text-[#3A80F2] bg-[#1F355B] rounded-md p-2"
+  const cardTail:any="text-5xl text-[#121212] bg-white rounded-md p-2"
   return (
 <div className=' pt-12'>
   <div className='w-full h-80  b flex justify-center '>
@@ -19,9 +19,9 @@ export const Dashboard = () => {
       <div className='w-full flex items-center justify-center '>
       <span className=' border-gray-400  border h-6 pr-2 pl-2 rounded-3xl text-white '>Daily DSA Practise</span></div>  
       
-        <h1 className='h-16 text-center mt-7  text-5xl font-bold bg-gradient-to-r from-blue-500 to-purple-900 bg-clip-text text-transparent'>ThreeQ Daily Challenge</h1>
+        <h1 className='h-16 text-center mt-7  text-5xl font-bold text-white '>ThreeQ Daily Challenge</h1>
         <div className='flex items-center justify-center'>
-        <p className=' w-[50%]  text-xl text-center text-slate-400 mt-4'>Build your Data Structures & Algorithms skills with a consistent daily practice of solving 3 LeetCode questions</p></div>
+        <p className=' w-[50%]  text-xl text-center text-[#dcdcdc] mt-4'>Build your Data Structures & Algorithms skills with a consistent daily practice of solving 3 LeetCode questions</p></div>
           <div className=' flex justify-center gap-6 mt-8'>
         {/* <Button variant="contained" className='text-black'>Start Today's Challenge</Button>
         */}

@@ -7,8 +7,8 @@ interface ButtonProps{
 }
 
 const variantClass={
-   "primary":` bg-[#3B82F6] text-black  hover:bg-[#1565C0] `,
-   "secondary": "text-white border border-slate-200 hover:text-slate-400 hover:border-slate-400 "
+   "primary":` bg-gray-300 text-black  hover:bg-gray-500 hover:text-white `,
+   "secondary": "text-white border border-white hover:text-gray-400 hover:border-gray-400 "
 }
 
 const Button2 = ({text,variant}:ButtonProps) => {
