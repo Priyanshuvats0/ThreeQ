@@ -16,8 +16,8 @@ export const Dashboard = () => {
 <div className=' pt-12'>
   <div className='w-full h-80  b flex justify-center '>
     <div className='w-full '>
-      <div className='w-full flex items-center justify-center '>
-      <span className=' border-gray-400  border h-6 pr-2 pl-2 rounded-3xl text-white '>Daily DSA Practise</span></div>  
+      {/* <div className='w-full flex items-center justify-center '>
+      <span className=' border-gray-400  border h-6 pr-2 pl-2 rounded-3xl text-white '>Daily DSA Practise</span></div>   */}
       
         <h1 className='h-16 text-center mt-7  text-5xl font-bold text-white '>ThreeQ Daily Challenge</h1>
         <div className='flex items-center justify-center'>
