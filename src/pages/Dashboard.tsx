@@ -4,6 +4,7 @@ import Card from '../components/Card';
 import { FaCode } from "react-icons/fa6";
 import { GoGoal } from "react-icons/go";
 import { FaTrophy } from "react-icons/fa";
+import Questions from './Questions';
 
 
 
@@ -13,7 +14,7 @@ export const Dashboard = () => {
 
   const cardTail:any="text-5xl text-[#121212] bg-white rounded-md p-2"
   return (
-<div className=' pt-12'>
+<div className='min-h-screen bg-gradient-to-br from-[#020204] to-[#1e1e1e] pt-12'>
   <div className='w-full h-80  b flex justify-center '>
     <div className='w-full '>
       {/* <div className='w-full flex items-center justify-center '>
@@ -39,6 +40,7 @@ export const Dashboard = () => {
      <Card  headText="Skill Building" descText="Strenthen your DSA fundamentals with consistentpractise" icon={<GoGoal className={cardTail} />}/>
       <Card  headText="Track Progress"  descText="Monitor your daily streak and improvement over time"  icon={<FaTrophy className={cardTail} />}/>
       </div>
+      <Questions/>
 
 </div>
   )

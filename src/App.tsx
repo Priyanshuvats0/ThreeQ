@@ -1,20 +1,22 @@
 
 import './App.css'
 import {Dashboard }from './pages/Dashboard'
-import Footer from './pages/Footer'
-import Questions from './pages/Questions'
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SignUp from './pages/SignUp';
 
 function App() {
  
   return (
-    <>
-     <div className='min-h-screen bg-gradient-to-br from-[#020204] to-[#1e1e1e]'>
-      <Dashboard/>
-      <Questions/>
-      <Footer/>
+    <Router>
+      <Routes>
+        <Route path="/" element={ <Dashboard/>}/>
+       <Route path="/SignUp" element={<SignUp/>}/>
 
-     </div>
-    </>
+   
+  
+    </Routes>
+    </Router>
   )
 }
 
