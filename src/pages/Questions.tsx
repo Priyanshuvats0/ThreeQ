@@ -58,7 +58,7 @@ const Questions = () => {
           {/* map it up */}
           {ThreeState.map((question: any) => {
             {
-              console.log(progress);
+           
             }
             return (
               <Corousel
