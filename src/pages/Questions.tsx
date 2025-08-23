@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import Corousel from "../components/Corousel";
 import ProgressBar from "../components/ProgressBar";
+import { doc, updateDoc, arrayUnion, getFirestore} from "firebase/firestore";
+import { app } from "../config/firebase";
+import dayjs from "dayjs"
+import { getAuth } from "firebase/auth";
 
 const Questions = () => {
   const jsonURL =
@@ -27,6 +31,32 @@ const Questions = () => {
     fetchData();
   }, []);
 
+
+
+  useEffect(()=>{
+      const auth = getAuth(app);
+  const user = auth.currentUser;
+    const updateStreak = async () => {
+    const db = getFirestore(app);
+    if(!user){
+      console.log("you are not signed in")
+      return
+    }
+    const userRef = doc(db, "users", user.uid);
+    const today = dayjs().format("YYYY-MM-DD");
+
+    await updateDoc(userRef, {
+      streakDate: arrayUnion({ [today]: progress?.length === 3 }),
+      questionSolved: arrayUnion(...progress)
+    });
+  };
+
+  if (progress !== null) {
+    updateStreak();
+  }
+  },[progress])
+
+
   const updateProgress = (num: number) => {
     let arr = progress;
     const index = arr?.indexOf(num);
@@ -44,7 +74,7 @@ const Questions = () => {
       }
     }
   };
-
+ console.log(progress);
   return (
     <div className="bg-[#1f1f1f] border border-white shadow-lg  mr-16 ml-16 mt-16 text-white pb-12 rounded-md ">
       <div className="head flex  justify-center pt-8 ">

@@ -1,17 +1,39 @@
+import { useEffect, useState } from "react";
 import ActivityGrid from "../components/ActivityGrid"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { app } from "../config/firebase";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import dayjs from "dayjs";
 
 
 const Profile = () => {
-const progressData = {
-  "2025-08-15": true,
-  "2025-08-16": false,
-  "2025-08-17": true,
-  "2025-08-18": true,
-  "2025-08-19": false,
-  "2025-08-20": true,
-};
+  const [streakDate,setStreakDate]=useState([]);
+  const [startDate,setStartDate]=useState("2029-08-15");
 
+  useEffect(() => {
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        console.log("not signed in");
+        return;
+      }
+
+      const userRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(userRef);
+
+      if (docSnap.exists()) {
+        setStreakDate(docSnap.data().streakDate);
+        setStartDate(dayjs(docSnap.data().createdAt.toDate()).format("YYYY-MM-DD"));
+      } else {
+        console.log("No such document!");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+ console.log(startDate)
   return (
     <div className="min-h-screen bg-black p-8">
        <div className="">
@@ -24,7 +46,7 @@ const progressData = {
                 <span className="text-gray-500 text-xl">priyanshu0</span>
                 </div>
              </div>
-            <ActivityGrid startDate="2025-08-15" progressData={progressData} />
+            <ActivityGrid startDate={startDate} streakDate={streakDate} />
        </div>
     </div>
   )

@@ -1,30 +1,30 @@
-import React from "react";
+
 import { motion } from "framer-motion";
 
-type ProgressData = {
-  [date: string]: boolean; // true = solved, false = missed
+type streakDate = {
+  [date: string]: boolean;
 };
 
 interface FiftyDayGridProps {
-  progressData: ProgressData;
+  streakDate:streakDate,
   startDate: string; // YYYY-MM-DD
 }
 
 function getColor(date: string, solved: boolean, today: Date) {
   const d = new Date(date);
 
-  if (d > today) return "#f1f5f9"; // upcoming → light gray
-  return solved ? "#30a14e" : "gray"; // solved = green, missed = gray
+  if (d > today) return "#f1f5f9"; 
+  return solved ? "#30a14e" : "gray"; 
 }
 
 export default function FiftyDayGrid({
-  progressData,
+  streakDate,
   startDate,
 }: FiftyDayGridProps) {
   const start = new Date(startDate);
   const today = new Date();
-
-  const totalDays = 50; // fixed streak length
+  
+  const totalDays = 50; 
 
   const days: { date: string; solved: boolean }[] = [];
 
@@ -32,7 +32,7 @@ export default function FiftyDayGrid({
     const date = new Date(start);
     date.setDate(start.getDate() + i);
     const key = date.toISOString().split("T")[0];
-    days.push({ date: key, solved: progressData[key] || false });
+    days.push({ date: key, solved: streakDate[key] || false });
   }
 
   return (
