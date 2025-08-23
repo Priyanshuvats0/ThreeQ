@@ -6,14 +6,15 @@ import { GoGoal } from "react-icons/go";
 import { FaTrophy } from "react-icons/fa";
 import Questions from './Questions';
 import { getAuth, onAuthStateChanged,signOut } from 'firebase/auth';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 
 export const Dashboard = () => {
   
-
-
+  const navigate=useNavigate();
+ const [userState, setUserState] = useState<any>(null);
   const cardTail:any="text-5xl text-[#121212] bg-white rounded-md p-2"
 
 useEffect(()=>{
@@ -24,9 +25,10 @@ const unsubscribe=  onAuthStateChanged(auth, (user) => {
     // https://firebase.google.com/docs/reference/js/auth.user
     const uid = user.uid;
     console.log(uid);
+     setUserState(userState);
     
   } else {
-
+   setUserState(null);
     console.log("user is signed out");
     // User is signed out
     // ...
@@ -45,6 +47,22 @@ const LogOut= async ()=>{
    console.error(error);
 };
 }
+
+const ShowProfile=()=>{
+   const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+  navigate("/profile"); 
+    
+  } else {
+    navigate("/signin");
+   
+  }
+   
+})}
+
   return (
 <div className='min-h-screen bg-gradient-to-br from-[#020204] to-[#1e1e1e] pt-12'>
   <div className='w-full h-80  b flex justify-center '>
@@ -61,7 +79,7 @@ const LogOut= async ()=>{
         */}
           {/* <Button variant="outlined">Progress</Button> */}
           <Button2 text="Start Today's Challenge" variant="primary"></Button2>
-          <Button2 text="View Progress" variant='secondary'></Button2>
+          <Button2 text="View Progress" variant='secondary' onClick={ShowProfile}  ></Button2>
       </div>
       </div>
       

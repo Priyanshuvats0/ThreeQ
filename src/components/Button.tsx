@@ -3,7 +3,7 @@
 interface ButtonProps{
    variant:"primary"|"secondary",
    text:String,
-
+   onClick?: () => void;
 }
 
 const variantClass={
@@ -11,9 +11,9 @@ const variantClass={
    "secondary": "text-white border border-white hover:text-gray-400 hover:border-gray-400 "
 }
 
-const Button2 = ({text,variant}:ButtonProps) => {
+const Button2 = ({text,variant,onClick}:ButtonProps) => {
   return (
-    <div className={variantClass[variant]+'p-2 font-semibold flex justify-center items-center pl-4 pr-4 rounded-sm  cursor-pointer '}>{text}</div>
+    <div className={variantClass[variant]+'p-2 font-semibold flex justify-center items-center pl-4 pr-4 rounded-sm  cursor-pointer '}  onClick={onClick}>{text}</div>
 
   )
 }
